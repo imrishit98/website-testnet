@@ -154,6 +154,7 @@ export default function User({ loginContext }: Props) {
 
   const avatarColor = graffitiToColor($user.graffiti)
   const ordinalRank = numberToOrdinal($user.rank)
+  const signupDate = new Date(2021, 11, 1)
 
   const totalWeeklyLimit = Object.values($metricsConfig.weekly_limits).reduce(
     (acc, cur) => acc + cur,
@@ -249,7 +250,7 @@ export default function User({ loginContext }: Props) {
                       </tr>
                     </thead>
                     <tbody className="text-sm">
-                      {renderEvents($events.data as API.ApiEvent[])}
+                      {renderEvents(signupDate, $events.data as API.ApiEvent[])}
                     </tbody>
                   </table>
                 </>
