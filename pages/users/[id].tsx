@@ -29,7 +29,6 @@ const validTabValue = (x: string) =>
 interface Props {
   loginContext: LoginContext
 }
-
 export default function User({ loginContext }: Props) {
   const $toast = useQueriedToast({
     queryString: 'toast',
@@ -245,7 +244,7 @@ export default function User({ loginContext }: Props) {
                       <tr className="text-xs text-left tracking-widest border-b border-black">
                         <th className="font-normal py-4">ACTIVITY</th>
                         <th className="font-normal">DATE</th>
-                        <th className="font-normal">POINTS EARNED</th>
+                        <th className="font-normal">POINTS</th>
                         <th className="font-normal">DETAILS</th>
                       </tr>
                     </thead>
