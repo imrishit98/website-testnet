@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useState } from 'react'
-import Router, { useRouter } from 'next/router'
+import { useRouter } from 'next/router'
 import Head from 'next/head'
 import useQuery from 'hooks/useQuery'
 
@@ -110,7 +110,7 @@ export default function User({ loginContext }: Props) {
           'error' in weeklyMetrics ||
           'error' in metricsConfig
         ) {
-          Router.push(
+          router.push(
             `/leaderboard?toast=${btoa(
               'An error occurred while fetching user data'
             )}`
@@ -136,6 +136,8 @@ export default function User({ loginContext }: Props) {
     }
   }, [
     routerIsReady,
+    router,
+    router.push,
     userId,
     loginContext?.metadata?.id,
     loginContext?.metadata?.graffiti,
