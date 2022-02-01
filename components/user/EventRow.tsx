@@ -1,4 +1,4 @@
-import { Element, Fragment, ReactType } from 'react'
+import { Element, Fragment } from 'react'
 import useClipboard from 'react-use-clipboard'
 import {
   format,
@@ -13,7 +13,7 @@ import ActivityBugReported from 'components/icons/ActivityBugReport'
 import ActivityPullRequest from 'components/icons/ActivityPullRequest'
 import ActivityCopy from 'components/icons/ActivityCopy'
 
-import { EventType, ApiEvent, ApiEventMetadata } from 'apiClient/index'
+import { EventType, ApiEvent, ApiEventMetadata } from 'apiClient'
 const NEEDS_ICON = '🤨'
 export function displayEventType(type: EventType): Element {
   const text =
@@ -96,8 +96,7 @@ const summarizeEvent = (
     return (
       <CopyableHash hash={hash}>
         <>
-          Block &hellip;{' '}
-          {hash.slice(hashLength - Math.round(hashLength / 4), Infinity)}
+          Block &hellip; {hash.slice(hashLength - Math.round(hashLength / 4))}
           <ActivityCopy className="ml-1" />
         </>
       </CopyableHash>
@@ -162,8 +161,6 @@ const WeekRow = ({ date, week }: WeekRowProps) => {
 const weeksBetween = (start: Date, end: Date) =>
   eachWeekOfInterval({ start, end })
 
-// type Predicate<T> = (x: T) => boolean
-
 const eventsBetween = (
   start: Date,
   end: Date,
@@ -192,10 +189,10 @@ type WeeklyData = {
 
 export const renderEvents = (start: Date, rawEvents: ApiEvent[]) => {
   const now = new Date()
-  const weeksThisYear = weeksBetween(start, now)
+  const weeks = weeksBetween(start, now)
   const counter = makeCounter()
   return (
-    weeksThisYear
+    weeks
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       .reduce((agg: any, date: Date) => {
         const prev = agg[agg.length - 1]
