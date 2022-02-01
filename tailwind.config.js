@@ -90,6 +90,9 @@ module.exports = {
           DEFAULT: '#FFC2EB',
           subtext: '#D089B9',
         },
+        ifmauve: {
+          DEFAULT: '#9B6288',
+        },
         ifcubepink: {
           DEFAULT: '#FF94DB',
         },
